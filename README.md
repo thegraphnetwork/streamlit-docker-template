@@ -1,5 +1,7 @@
 # streamlit-docker-template
-Template repository to create a dockerized Streamlit application from scratch
+Template repository to create a dockerized Streamlit application from scratch.
+
+If you want to create Streamlit application, select this repo as a templated when creating your app's repository.
 
 ### Run with docker-compose :
 
@@ -17,16 +19,6 @@ $ docker-compose up --build
 $ docker-compose down
 ```
 
-### Run Natively:
-
-**Pre-requisites**
-* pip
-
-```bash
-$ pip install -r requirements.txt
-
-$ streamlit run app.py
-```
 
 ### Run with virtualenv:
 
@@ -35,9 +27,10 @@ $ streamlit run app.py
 * poetry
 
 ```bash
-# first time only
+# Installing dependencies and activating the virtualenv
 
 $ poetry install
+$ poetry shell
 
 $ streamlit run app.py
 ```
@@ -56,6 +49,15 @@ $ docker build --cache-from streamlit-app:latest -t streamlit-app:latest .
 $ docker run -p 8501:8501 streamlit-app:latest
 ```
 
-You should be able to visit the app at http://localhost:8501
+You can open the app at http://localhost:8501
 
 
+### Further developing your application
+We recommend developing the app using the virtualenv instructions above. This way you can add dependencies like this:
+
+```bash
+# Adding pandas as a dependency
+$ poetry add pandas
+```
+
+Then poetry will update your pyproject.toml so that no change to the Dockerfile is necessary.
