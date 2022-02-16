@@ -10,7 +10,6 @@ COPY ./pyproject.toml ./pyproject.toml
 
 # Install dependencies
 RUN poetry install
-RUN poetry shell
 
 ENTRYPOINT [ "streamlit", "run", "app.py" ] 
 
